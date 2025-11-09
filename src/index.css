@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyberpunk Portfolio Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Dark cyberpunk background */
+    --background: 230 35% 7%;
+    --foreground: 210 100% 98%;
+    
+    /* Card backgrounds with subtle transparency */
+    --card: 230 35% 9%;
+    --card-foreground: 210 100% 98%;
+    
+    /* Neon color palette */
+    --neon-cyan: 185 100% 60%;
+    --neon-purple: 270 100% 70%;
+    --neon-lime: 90 100% 60%;
+    --neon-pink: 330 100% 70%;
+    
+    /* Primary neon cyan */
+    --primary: 185 100% 60%;
+    --primary-foreground: 230 35% 7%;
+    --primary-glow: 185 100% 60%;
+    
+    /* Secondary neon purple */
+    --secondary: 270 100% 70%;
+    --secondary-foreground: 230 35% 7%;
+    --secondary-glow: 270 100% 70%;
+    
+    /* Accent neon lime */
+    --accent: 90 100% 60%;
+    --accent-foreground: 230 35% 7%;
+    --accent-glow: 90 100% 60%;
+    
+    /* Muted colors */
+    --muted: 230 20% 15%;
+    --muted-foreground: 210 20% 70%;
+    
+    /* Borders and inputs */
+    --border: 230 20% 20%;
+    --input: 230 20% 15%;
+    --ring: 185 100% 60%;
+    
+    /* Destructive */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 210 100% 98%;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-purple)) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--neon-lime)) 0%, hsl(var(--neon-cyan)) 100%);
+    --gradient-background: linear-gradient(135deg, hsl(230 35% 5%) 0%, hsl(230 35% 10%) 100%);
+    
+    /* Shadows and glows */
+    --glow-primary: 0 0 20px hsl(var(--neon-cyan) / 0.5);
+    --glow-secondary: 0 0 20px hsl(var(--neon-purple) / 0.5);
+    --glow-accent: 0 0 20px hsl(var(--neon-lime) / 0.5);
+    --glow-intense: 0 0 40px hsl(var(--neon-cyan) / 0.8);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.3s ease-in-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
