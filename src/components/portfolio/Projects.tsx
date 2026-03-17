@@ -5,7 +5,8 @@ const projects = [
   {
     id: 1,
     title: "ViiShop — E-Commerce Website",
-    description: "Full-stack e-commerce platform for seamless shopping and order management.",
+    description:
+      "Full-stack e-commerce platform for seamless shopping and order management.",
     tech: ["React.js", "Express.js", "Node.js", "MongoDB"],
     image:
       "https://res.cloudinary.com/dc5154n7n/image/upload/v1762696778/Screenshot_2025-11-09_192827_snfeki.png",
@@ -14,18 +15,28 @@ const projects = [
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "Real-time collaborative task manager with drag-and-drop functionality.",
-    tech: ["React", "Socket.io", "Express", "MySQL"],
+    title: "Sales CRM",
+    description:
+      "Streamlines customer management by tracking leads, sales, and follow-ups efficiently.",
+    tech: [
+      "MongoDB",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "JWT Authentication",
+      "REST APIs",
+      "RBAC",
+    ],
     image:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
-    github: "#",
-    live: "#",
+      "https://res.cloudinary.com/dc5154n7n/image/upload/v1773773019/Screenshot_2026-03-18_001300_yfwghn.png",
+    github: "https://github.com/vijaypatil2003/sales-crm",
+    live: "https://crm-frontend-nine-gules.vercel.app/",
   },
   {
     id: 3,
     title: "AI Chat Bot",
-    description: "Intelligent chatbot using OpenAI API with natural language processing.",
+    description:
+      "Intelligent chatbot using OpenAI API with natural language processing.",
     tech: ["Python", "FastAPI", "OpenAI", "React"],
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
