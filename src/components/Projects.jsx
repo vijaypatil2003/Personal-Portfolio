@@ -8,11 +8,13 @@ import {
   FiDatabase,
   FiCpu,
   FiShoppingBag,
+  FiUsers,
 } from "react-icons/fi";
 import instabooking from "../assets/instabooking.png";
 import instacrm from "../assets/instabooking.png";
-import jobtracker from "../assets/instabooking.png";
-import viishop from "../assets/instabooking.png";
+import jobtracker from "../assets/JOB-TRACK-Project.png";
+import viishop from "../assets/JOB-TRACK-Project.png";
+import HRMSProject from "../assets/HRMS-Project.png";
 
 // import instacrm from "../assets/instacrm.png";
 // import jobtracker from "../assets/jobtracker.png";
@@ -136,7 +138,10 @@ const worker = new Worker('email-notifications',
     // counter: "03 / 04",
     tag: "Personal · AI Integration",
     name: "JobTracker Pro",
-    subtitle: "AI-Powered Application Intelligence Platform",
+    // subtitle: "AI-Powered Application Intelligence Platform",
+    // subtitle: "Track every application, never miss a follow-up",
+    subtitle:
+      "AI-Powered Job Application Tracker — Track, Manage & Analyze Your Job Hunt",
     description:
       "A full-stack job tracker where Groq's LLaMA 3.3 parses resumes, extracts job descriptions, and scores candidate-job fit across 4 weighted dimensions — built solo, frontend to AI layer.",
     tech: "React.js / Node.js / MongoDB / Groq LLaMA 3.3 / JWT / Zod",
@@ -236,6 +241,56 @@ const uploadToCloudinary = async (fileBuffer, folder) => {
   });
 };`,
       codeLabel: "Server-Side Cloudinary Upload — Keys Never Exposed to Client",
+    },
+  },
+  {
+    id: 5,
+    tag: "Work · Full-Stack",
+    name: "HRMS",
+    subtitle: "HR Management System with Attendance & Payroll",
+    description:
+      "A full-stack MERN HRMS platform with role-based access for Admin and Employee, covering attendance tracking, leave management, holiday calendar, and payroll.",
+    tech: "React.js / Node.js / Express.js / MongoDB / JWT / Tailwind CSS",
+    image: HRMSProject,
+    liveLink: "https://hrms-frontend-two-chi.vercel.app",
+    githubLink: "https://github.com/vijaypatil2003/hrms-frontend",
+    drawer: {
+      icon: <FiUsers size={16} />,
+      problem:
+        "Managing employee attendance, leaves, and payroll manually is error-prone and time-consuming. HR teams need a centralized system with role-based access to handle day-to-day operations efficiently.",
+      solution: [
+        {
+          highlight: "Role-Based Access Control",
+          text: "— separate Admin and Employee interfaces with JWT-protected routing.",
+        },
+        {
+          highlight: "Attendance Tracking",
+          text: "— employees can check in/out with work hours and break time calculated automatically.",
+        },
+        {
+          highlight: "Leave Management",
+          text: "— employees apply for leaves, admins approve or reject with status tracking.",
+        },
+        {
+          highlight: "Payroll & Holidays",
+          text: "— admin manages payroll records and holiday calendar visible to all employees.",
+        },
+      ],
+      code: `// Auto calculate work hours on checkout
+const checkout = async (req, res) => {
+  const attendance = await Attendance.findOne({
+    employee: req.user.id,
+    date: today,
+  });
+  
+  const workMillis = new Date() - new Date(attendance.checkIn);
+  attendance.workHours = (workMillis / 3600000).toFixed(2);
+  attendance.checkOut = new Date();
+  await attendance.save();
+
+  res.json(attendance);
+};`,
+      codeLabel: "Auto Work Hours Calculation on Checkout",
     },
   },
 ];
