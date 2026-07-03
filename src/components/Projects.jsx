@@ -135,43 +135,40 @@ const worker = new Worker('email-notifications',
   },
   {
     id: 3,
-    // counter: "03 / 04",
-    tag: "Personal · AI Integration",
+    tag: "Personal · Full Stack · AI Integration",
     name: "JobTracker Pro",
-    // subtitle: "AI-Powered Application Intelligence Platform",
-    // subtitle: "Track every application, never miss a follow-up",
     subtitle:
-      "AI-Powered Job Application Tracker — Track, Manage & Analyze Your Job Hunt",
+      "AI-Powered Job Tracker — Resume Parsing, JD Extraction & Fit Scoring in One Place",
     description:
-      "A full-stack job tracker where Groq's LLaMA 3.3 parses resumes, extracts job descriptions, and scores candidate-job fit across 4 weighted dimensions — built solo, frontend to AI layer.",
-    tech: "React.js / Node.js / MongoDB / Groq LLaMA 3.3 / JWT / Zod",
+      "A production-grade MERN job tracker with a 9-stage application pipeline, AI-powered resume parsing via Groq LLaMA 3.3, JD-based auto-fill, and candidate-job fit scoring with matched/missing skills breakdown — built solo, frontend to AI layer.",
+    tech: "React.js / Node.js / Express.js / MongoDB / Groq LLaMA 3.3 / JWT / Multer / Nodemailer / node-cron / SheetJS",
     image: jobtracker,
     liveLink: null,
-    githubLink: null,
+    githubLink: "https://github.com/vijaypatil2003/job-tracker-frontend",
     drawer: {
       icon: <FiCpu size={16} />,
       problem:
-        "Job seekers track applications across spreadsheets with no visibility into fit, no feedback loop between profile and opportunity, and no way to know if a resume matches a role before applying.",
+        "Job seekers juggle applications across spreadsheets with no structured pipeline, no resume-to-role fit visibility, no follow-up reminders, and no way to know if their profile actually matches a role before applying.",
       solution: [
         {
           highlight: "AI Resume Parsing",
-          text: "— Groq LLaMA 3.3 extracts structured JSON from uploaded resume, auto-fills profile form.",
+          text: "— Upload resume PDF, Groq LLaMA 3.3 extracts structured profile data and auto-fills the user profile — skills, experience, education pulled in one click.",
         },
         {
-          highlight: "AI JD Extraction",
-          text: "— paste any job description, AI extracts company, role, salary, location in one click.",
+          highlight: "3-Mode Job Entry",
+          text: "— Auto-fill from JD (AI extracts company, role, location), Quick Fill with essential fields only, or Detailed Fill for complete application tracking.",
         },
         {
           highlight: "Fit Score Engine",
-          text: "— weighted scoring: Skills 40% + Experience 30% + Education 20% + Location 10%, with matched/missing skills breakdown.",
+          text: "— On-demand scoring matches your profile against the job description, returning an overall fit score with matched skills and missing skills breakdown.",
         },
         {
-          highlight: "9-Stage Pipeline",
-          text: "— Not Applied → Selected/Rejected, with activity log on every status change.",
+          highlight: "9-Stage Pipeline + Reminders",
+          text: "— Not Applied → Selected/Rejected with full activity log, email reminders via Nodemailer + node-cron, analytics dashboard, and CSV/Excel export via SheetJS.",
         },
       ],
-      code: `// Fit score — computed on-demand, never stored
-// (stored score goes stale on profile update)
+      code: `// Fit score — computed on-demand against live profile
+// (never stored — always reflects current profile state)
 const computeFitScore = async (profile, jobDescription) => {
   const prompt = buildScoringPrompt(profile, jobDescription);
 
@@ -183,10 +180,11 @@ const computeFitScore = async (profile, jobDescription) => {
 
   const raw = JSON.parse(response.choices[0].message.content);
 
-  // Normalize on backend — never trust raw LLM shape
+  // Returns: score, matchedSkills[], missingSkills[], breakdown
   return normalizeFitScore(raw);
 };`,
-      codeLabel: "On-Demand Fit Scoring — LLM Output Normalized Server-Side",
+      codeLabel:
+        "On-Demand Fit Scoring — Profile vs JD, Matched & Missing Skills via Groq LLaMA 3.3",
     },
   },
   {
